@@ -13,12 +13,13 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Pais {
+public class Enfermedad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPais;
+    private Long idEnfermedad;
 
     private String nombre;
+
 
 }

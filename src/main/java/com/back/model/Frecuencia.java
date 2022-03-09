@@ -4,20 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Pais {
+public class Frecuencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPais;
+    private Long idFrecuencia;
 
     private String nombre;
 

@@ -4,11 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 
 @Entity
@@ -27,7 +25,9 @@ public class Usuario {
 
     private String correoElectronico;
 
-    //private Pais
+    @ManyToOne
+    @JoinColumn(name = "id_pais")
+    private Pais pais;
     //private tipoDocumento
 
     private String numeroDocumento;
@@ -36,15 +36,18 @@ public class Usuario {
 
     private ZonedDateTime fechaNacimiento;
 
-    private Integer peso;
+    private Long peso;
 
-    private Integer talla;
+    private Long talla;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioEnfermedad> listUsuarioEnfermedad;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioFarmaco> listUsuarioFarmaco;
 
-
-
-
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioDeporte> listUsuarioDeporte;
 
 
 
