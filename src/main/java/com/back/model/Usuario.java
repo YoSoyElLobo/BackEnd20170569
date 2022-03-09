@@ -19,6 +19,10 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
 
+    @ManyToOne
+    @JoinColumn(name = "id_rol")
+    private Rol rol;
+
     private String nombres;
 
     private String apellidos;
