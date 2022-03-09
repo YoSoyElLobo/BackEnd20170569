@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UsuarioAlimento {
+public class UsuarioEstudio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +19,10 @@ public class UsuarioAlimento {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    @JsonIgnore
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_enfermedad")
-    private Alimento alimento;
-
-    private Long cantidad;
+    @JoinColumn(name = "id_estudio")
+    @JsonIgnore
+    private Estudio estudio;
 }

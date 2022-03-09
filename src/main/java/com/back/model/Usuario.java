@@ -49,6 +49,8 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioDeporte> listUsuarioDeporte;
 
+    private Boolean estado;
+
 
 
 }
