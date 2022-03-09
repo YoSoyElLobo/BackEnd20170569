@@ -1,0 +1,51 @@
+package com.back.model;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.time.ZonedDateTime;
+
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idUsuario;
+
+    private String nombres;
+
+    private String apellidos;
+
+    private String correoElectronico;
+
+    //private Pais
+    //private tipoDocumento
+
+    private String numeroDocumento;
+
+    private String telefono;
+
+    private ZonedDateTime fechaNacimiento;
+
+    private Integer peso;
+
+    private Integer talla;
+
+
+
+
+
+
+
+
+
+}
