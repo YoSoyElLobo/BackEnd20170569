@@ -19,14 +19,14 @@ import java.util.Map;
 public class FrecuenciaController {
 
     @Autowired
-    FrecuenciaService frecuenciaService;
+    private FrecuenciaService frecuenciaService;
 
     @GetMapping("/list")
     public ResponseEntity<RestResponse> list(){
         RestResponse restResponse = new RestResponse();
 
         Map<String, List<Frecuencia>> response = new HashMap<>();
-        response.put("frecuencias", frecuenciaService.getAll());
+        response.put("frecuencias", frecuenciaService.findAll());
 
         restResponse.setStatus(HttpStatus.OK);
         restResponse.setPayload(response);

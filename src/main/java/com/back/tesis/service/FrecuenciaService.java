@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface FrecuenciaService {
-    List<Frecuencia> getAll();
+    List<Frecuencia> findAll();
     Frecuencia findById(Long idFrecuencia);
 
 }

@@ -13,10 +13,10 @@ import java.util.List;
 public class FrecuenciaServiceImpl implements FrecuenciaService {
 
     @Autowired
-    FrecuenciaRepository frecuenciaRepository;
+    private FrecuenciaRepository frecuenciaRepository;
 
     @Override
-    public List<Frecuencia> getAll() {
+    public List<Frecuencia> findAll() {
         return frecuenciaRepository.findAll();
     }
 
