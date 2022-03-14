@@ -1,4 +1,4 @@
-package com.back.model;
+package com.back.tesis.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Alimento {
+public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAlimento;
+    private Long idRol;
 
     private String nombre;
 

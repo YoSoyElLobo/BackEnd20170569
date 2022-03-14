@@ -1,4 +1,4 @@
-package com.back.model;
+package com.back.tesis.model;
 
 import lombok.Getter;
 import lombok.Setter;

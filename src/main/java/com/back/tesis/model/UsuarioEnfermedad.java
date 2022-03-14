@@ -1,4 +1,4 @@
-package com.back.model;
+package com.back.tesis.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
@@ -6,16 +6,17 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.ZonedDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class UsuarioAlimento {
+public class UsuarioEnfermedad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuarioAlimento;
+    private Long idUsuarioEnfermedad;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
@@ -24,7 +25,10 @@ public class UsuarioAlimento {
 
     @ManyToOne
     @JoinColumn(name = "id_enfermedad")
-    private Alimento alimento;
+    private Enfermedad enfermedad;
 
-    private Long cantidad;
+    private ZonedDateTime fechaDeteccion;
+
+    private Boolean estado;
+
 }

@@ -1,4 +1,4 @@
-package com.back.model;
+package com.back.tesis.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;

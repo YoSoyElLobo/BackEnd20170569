@@ -1,4 +1,4 @@
-package com.back.model;
+package com.back.tesis.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,13 +13,12 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Enfermedad {
+public class Deporte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEnfermedad;
+    private Long idDeporte;
 
     private String nombre;
-
 
 }

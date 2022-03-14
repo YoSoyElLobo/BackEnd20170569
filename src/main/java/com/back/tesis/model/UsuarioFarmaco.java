@@ -1,4 +1,4 @@
-package com.back.model;
+package com.back.tesis.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
@@ -12,11 +12,11 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UsuarioDeporte {
+public class UsuarioFarmaco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuarioEnfermedad;
+    private Long idUsuarioFarmaco;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
@@ -24,12 +24,15 @@ public class UsuarioDeporte {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_deporte")
-    private Deporte deporte;
+    @JoinColumn(name = "id_enfermedad")
+    private Farmaco farmaco;
 
-    private ZonedDateTime fechaInicio;
+    private Long cantidad;
 
     @ManyToOne
     @JoinColumn(name = "id_frecuencia")
     private Frecuencia frecuencia;
+
+    private ZonedDateTime fechaInicio;
+
 }
