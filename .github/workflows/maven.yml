@@ -33,3 +33,14 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        script: |
+          sudo docker pull yosoyellobo/backend20170569-image
+          sudo docker stop back-end
+          sudo docker rm back-end
+          sudo docker run --name=back-end -d -p 8080:8080 yosoyellobo/backend20170569-image
