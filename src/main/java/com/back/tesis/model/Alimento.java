@@ -18,4 +18,6 @@ public class Alimento {
 
     private String nombre;
 
+    private Boolean estado = true;
+
 }

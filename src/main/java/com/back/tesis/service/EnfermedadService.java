@@ -9,7 +9,7 @@ public interface EnfermedadService {
     Enfermedad create(Enfermedad enfermedad);
     Enfermedad update(Enfermedad enfermedad);
     Enfermedad save(Enfermedad enfermedad);
-    void delete(Long idEnfermedad);
+    void delete(Enfermedad enfermedad);
     List<Enfermedad> saveAll(List<Enfermedad> enfermedades);
     List<Enfermedad> findByNombre(String nombre);
     Enfermedad findById(Long idEnfermedad);

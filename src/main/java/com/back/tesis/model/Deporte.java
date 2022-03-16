@@ -21,4 +21,6 @@ public class Deporte {
 
     private String nombre;
 
+    private Boolean estado = true;
+
 }
