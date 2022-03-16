@@ -61,21 +61,25 @@ public class EnfermedadController {
     @PutMapping("/update")
     public ResponseEntity<RestResponse> update(@RequestBody Enfermedad enfermedad){
         RestResponse restResponse = new RestResponse();
+        List<Enfermedad> enfermedades;
 
         Map<String, Enfermedad> response = new HashMap<>();
         if (enfermedadService.findById(enfermedad.getIdEnfermedad())==null) {
             restResponse.setStatus(HttpStatus.NOT_FOUND);
             restResponse.setMessage("Esta enfermedad no existe en el sistema.");
         }
-        else if (enfermedadService.findByNombre(enfermedad.getNombre()).size()>0){
-            restResponse.setStatus(HttpStatus.BAD_REQUEST);
-            restResponse.setMessage("Esta enfermedad ya está registrada.");
-        }
-        else{
-            response.put("enfermedad", enfermedadService.update(enfermedad));
-            restResponse.setStatus(HttpStatus.OK);
-            restResponse.setPayload(response);
-            restResponse.setMessage("Se actualizó la enfermedad.");
+        else {
+            enfermedades = enfermedadService.findByNombre(enfermedad.getNombre());
+            if (enfermedades.size()>0 && enfermedades.get(0).getIdEnfermedad() != enfermedad.getIdEnfermedad()){
+                restResponse.setStatus(HttpStatus.BAD_REQUEST);
+                restResponse.setMessage("Esta enfermedad ya está registrada.");
+            }
+            else{
+                response.put("enfermedad", enfermedadService.update(enfermedad));
+                restResponse.setStatus(HttpStatus.OK);
+                restResponse.setPayload(response);
+                restResponse.setMessage("Se actualizó la enfermedad.");
+            }
         }
 
         return ResponseEntity
@@ -86,13 +90,13 @@ public class EnfermedadController {
     @DeleteMapping("/delete")
     public ResponseEntity<RestResponse> delete(@RequestParam Long idEnfermedad){
         RestResponse restResponse = new RestResponse();
-
-        if (enfermedadService.findById(idEnfermedad)==null) {
+        Enfermedad enfermedad = enfermedadService.findById(idEnfermedad);
+        if (enfermedad==null) {
             restResponse.setStatus(HttpStatus.NOT_FOUND);
             restResponse.setMessage("Esta enfermedad no existe en el sistema.");
         }
         else{
-            enfermedadService.delete(idEnfermedad);
+            enfermedadService.delete(enfermedad);
             restResponse.setMessage("Enfermedad eliminada.");
             restResponse.setStatus(HttpStatus.OK);
         }

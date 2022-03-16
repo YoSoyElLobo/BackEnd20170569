@@ -21,4 +21,6 @@ public class Farmaco {
 
     private String nombre;
 
+    private Boolean estado = true;
+
 }

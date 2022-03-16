@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface EnfermedadRepository extends JpaRepository<Enfermedad, Long> {
     List<Enfermedad> findByNombre(String nombre);
+    List<Enfermedad> findByEstadoTrue();
 }

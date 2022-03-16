@@ -17,7 +17,7 @@ public class EnfermedadServiceImpl implements EnfermedadService {
 
     @Override
     public List<Enfermedad> findAll() {
-        return enfermedadRepository.findAll();
+        return enfermedadRepository.findByEstadoTrue();
     }
 
     @Override
@@ -36,8 +36,9 @@ public class EnfermedadServiceImpl implements EnfermedadService {
     }
 
     @Override
-    public void delete(Long idEnfermedad) {
-        enfermedadRepository.deleteById(idEnfermedad);
+    public void delete(Enfermedad enfermedad) {
+        enfermedad.setEstado(false);
+        save(enfermedad);
     }
 
     @Override
