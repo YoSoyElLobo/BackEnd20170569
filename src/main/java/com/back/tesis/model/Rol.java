@@ -18,6 +18,4 @@ public class Rol {
 
     private String nombre;
 
-    private Boolean estado = true;
-
 }
