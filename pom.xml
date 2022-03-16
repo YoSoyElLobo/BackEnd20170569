@@ -58,6 +58,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>backend20170569-image</finalName>
 	</build>
 
 </project>
