@@ -48,12 +48,12 @@ public class EnfermedadServiceImpl implements EnfermedadService {
 
     @Override
     public List<Enfermedad> findByNombre(String nombre) {
-        return enfermedadRepository.findByNombre(nombre);
+        return enfermedadRepository.findByNombreAndEstadoTrue(nombre);
     }
 
     @Override
     public Enfermedad findById(Long idEnfermedad) {
-        return enfermedadRepository.findById(idEnfermedad).orElse(null);
+        return enfermedadRepository.findByIdEnfermedadAndEstadoTrue(idEnfermedad).orElse(null);
     }
 
 
