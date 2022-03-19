@@ -31,7 +31,7 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "id_pais")
-    private Pais pais;
+    private Pais nacionalidad;
     //private tipoDocumento
 
     private String numeroDocumento;

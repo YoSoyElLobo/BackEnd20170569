@@ -56,23 +56,29 @@ public class LoginController {
             // Get profile information from payload
             String email = payload.getEmail();
             usuario = usuarioService.findByCorreoElectronico(email);
-
-
+            if (usuario == null){
+                restResponse.setStatus(HttpStatus.NOT_FOUND);
+                restResponse.setMessage("No se encontró al usuario");
+                // acá debería registrarlo como participante
+            }
+            else{
+                restResponse.setPayload(usuario);
+                restResponse.setStatus(HttpStatus.OK);
+                restResponse.setMessage("Se encontró al usuario");
+            }
             /*boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
             String name = (String) payload.get("name");
             String pictureUrl = (String) payload.get("picture");
             String locale = (String) payload.get("locale");
             String familyName = (String) payload.get("family_name");
             String givenName = (String) payload.get("given_name");*/
-            restResponse.setPayload(usuario);
-            restResponse.setStatus(HttpStatus.OK);
-            restResponse.setMessage("Se encontró al usuario");
+
             return ResponseEntity
                     .status(restResponse.getStatus())
                     .body(restResponse);
         }
         restResponse.setStatus(HttpStatus.NOT_FOUND);
-        restResponse.setMessage("No se encontró al usuario");
+        restResponse.setMessage("No se encontró el token");
         return ResponseEntity
                 .status(restResponse.getStatus())
                 .body(restResponse);

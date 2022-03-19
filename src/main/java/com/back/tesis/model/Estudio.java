@@ -22,7 +22,13 @@ public class Estudio {
     @JoinColumn(name = "id_usuario")
     private Usuario investigador;
 
-    private String description;
+    private String nombreEspanol;
+
+    private String nombreIngles;
+
+    private String descripcionEspanol;
+
+    private String descripcionIngles;
 
     private ZonedDateTime fechaInicio;
 
@@ -30,7 +36,28 @@ public class Estudio {
 
     private String resultados;
 
+    private Boolean estado;
+
+    private Boolean enCurso;
+
+    private String bioma;
+
+    private String fuente;
+
+    private String material;
+
+    private String NCBISampleClassification;
+
+    //private sequencingMethod or instrumentModel
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_pais")
+    private Pais pais;
+
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioEstudio> listUsuarioEstudio;
+
+
 
 }
