@@ -64,7 +64,7 @@ public class LoginController {
             String locale = (String) payload.get("locale");
             String familyName = (String) payload.get("family_name");
             String givenName = (String) payload.get("given_name");*/
-            restResponse.setPayload(email);
+            restResponse.setPayload(usuario);
             restResponse.setStatus(HttpStatus.OK);
             restResponse.setMessage("Se encontró al usuario");
             return ResponseEntity
