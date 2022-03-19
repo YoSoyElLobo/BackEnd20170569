@@ -66,10 +66,13 @@ public class LoginController {
             String givenName = (String) payload.get("given_name");*/
             restResponse.setPayload(usuario);
             restResponse.setStatus(HttpStatus.OK);
+            restResponse.setMessage("Se encontró al usuario");
+            return ResponseEntity
+                    .status(restResponse.getStatus())
+                    .body(restResponse);
         }
-        else{
-            restResponse.setStatus(HttpStatus.NOT_FOUND);
-        }
+        restResponse.setStatus(HttpStatus.NOT_FOUND);
+        restResponse.setMessage("No se encontró al usuario");
         return ResponseEntity
                 .status(restResponse.getStatus())
                 .body(restResponse);
