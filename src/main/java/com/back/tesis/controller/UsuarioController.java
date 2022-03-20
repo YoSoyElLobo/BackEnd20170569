@@ -104,4 +104,27 @@ public class UsuarioController {
                 .status(restResponse.getStatus())
                 .body(restResponse);
     }
+
+    @GetMapping("/findById")
+    public ResponseEntity<RestResponse> findById(@RequestParam Long idUsuario){
+        RestResponse restResponse = new RestResponse();
+        Map<String, Usuario> response = new HashMap<>();
+
+        Usuario usuario = usuarioService.findById(idUsuario);
+        if (usuario==null) {
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Esta usuario no existe en el sistema.");
+        }
+        else {
+            response.put("usuario", usuario);
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se encontró el usuario.");
+        }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
 }
