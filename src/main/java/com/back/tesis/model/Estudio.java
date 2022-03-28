@@ -1,11 +1,13 @@
 package com.back.tesis.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -30,11 +32,17 @@ public class Estudio {
 
     private String descripcionIngles;
 
-    private ZonedDateTime fechaInicio;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    private Date fechaInicio;
 
-    private ZonedDateTime fechaFin;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    private Date fechaFin;
 
     private String resultados;
+
+    private Double latitud;
+
+    private Double longitud;
 
     private Boolean estado;
 
@@ -48,7 +56,7 @@ public class Estudio {
 
     private String NCBISampleClassification;
 
-    //private sequencingMethod or instrumentModel
+    private String sequencingMethod;
 
 
     @ManyToOne
