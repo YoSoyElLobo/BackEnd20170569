@@ -1,15 +1,12 @@
 package com.back.tesis.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -23,19 +20,15 @@ public class UsuarioEnfermedad {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonIgnore
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "id_enfermedad")
     private Enfermedad enfermedad;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    private Date fechaDeteccion;
+    private ZonedDateTime fechaDeteccion;
 
     private Boolean estado;
-
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    private Date fechaModificacion;
 
 }

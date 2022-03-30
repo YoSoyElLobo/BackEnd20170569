@@ -19,9 +19,7 @@ public class Enfermedad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEnfermedad;
 
-    private String nombreEspanol;
-
-    private String nombreIngles;
+    private String nombre;
 
     private Boolean estado = true;
 

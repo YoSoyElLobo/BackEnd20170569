@@ -41,7 +41,7 @@ public class EnfermedadController {
         RestResponse restResponse = new RestResponse();
 
         Map<String, Enfermedad> response = new HashMap<>();
-        if (enfermedadService.findByNombreEspanol(enfermedad.getNombreEspanol()).size()>0){
+        if (enfermedadService.findByNombre(enfermedad.getNombre()).size()>0){
             restResponse.setStatus(HttpStatus.BAD_REQUEST);
             restResponse.setMessage("Esta enfermedad ya está registrada.");
         }
@@ -69,7 +69,7 @@ public class EnfermedadController {
             restResponse.setMessage("Esta enfermedad no existe en el sistema.");
         }
         else {
-            enfermedades = enfermedadService.findByNombreEspanol(enfermedad.getNombreEspanol());
+            enfermedades = enfermedadService.findByNombre(enfermedad.getNombre());
             if (enfermedades.size()>0 && enfermedades.get(0).getIdEnfermedad() != enfermedad.getIdEnfermedad()){
                 restResponse.setStatus(HttpStatus.BAD_REQUEST);
                 restResponse.setMessage("Esta enfermedad ya está registrada.");

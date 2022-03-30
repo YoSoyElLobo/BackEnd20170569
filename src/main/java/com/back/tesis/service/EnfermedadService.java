@@ -11,7 +11,7 @@ public interface EnfermedadService {
     Enfermedad save(Enfermedad enfermedad);
     void delete(Enfermedad enfermedad);
     List<Enfermedad> saveAll(List<Enfermedad> enfermedades);
-    List<Enfermedad> findByNombreEspanol(String nombre);
+    List<Enfermedad> findByNombre(String nombre);
     Enfermedad findById(Long idEnfermedad);
 
 }

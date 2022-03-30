@@ -11,6 +11,6 @@ public interface FarmacoService {
     Farmaco save(Farmaco farmaco);
     void delete(Farmaco farmaco);
     List<Farmaco> saveAll(List<Farmaco> farmacos);
-    List<Farmaco> findByNombreEspanol(String nombre);
+    List<Farmaco> findByNombre(String nombre);
     Farmaco findById(Long idFarmaco);
 }

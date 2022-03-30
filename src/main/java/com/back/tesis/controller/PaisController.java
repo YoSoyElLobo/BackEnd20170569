@@ -41,7 +41,7 @@ public class PaisController {
         RestResponse restResponse = new RestResponse();
 
         Map<String, Pais> response = new HashMap<>();
-        if (paisService.findByNombreEspanol(pais.getNombreEspanol()).size()>0){
+        if (paisService.findByNombre(pais.getNombre()).size()>0){
             restResponse.setStatus(HttpStatus.BAD_REQUEST);
             restResponse.setMessage("Esta pais ya está registrado.");
         }
@@ -69,7 +69,7 @@ public class PaisController {
             restResponse.setMessage("Esta pais no existe en el sistema.");
         }
         else {
-            paises = paisService.findByNombreEspanol(pais.getNombreEspanol());
+            paises = paisService.findByNombre(pais.getNombre());
             if (paises.size()>0 && paises.get(0).getIdPais() != pais.getIdPais()){
                 restResponse.setStatus(HttpStatus.BAD_REQUEST);
                 restResponse.setMessage("Esta pais ya está registrado.");

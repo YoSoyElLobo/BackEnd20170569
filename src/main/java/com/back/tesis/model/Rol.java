@@ -16,8 +16,6 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRol;
 
-    private String nombreEspanol;
-
-    private String nombreIngles;
+    private String nombre;
 
 }

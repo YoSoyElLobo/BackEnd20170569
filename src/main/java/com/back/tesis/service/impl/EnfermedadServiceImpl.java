@@ -47,8 +47,8 @@ public class EnfermedadServiceImpl implements EnfermedadService {
     }
 
     @Override
-    public List<Enfermedad> findByNombreEspanol(String nombre) {
-        return enfermedadRepository.findByNombreEspanolAndEstadoTrue(nombre);
+    public List<Enfermedad> findByNombre(String nombre) {
+        return enfermedadRepository.findByNombreAndEstadoTrue(nombre);
     }
 
     @Override

@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AlimentoRepository extends JpaRepository<Alimento, Long> {
-    List<Alimento> findByNombreEspanolAndEstadoTrue(String nombre);
-    List<Alimento> findByNombreInglesAndEstadoTrue(String nombre);
+    List<Alimento> findByNombreAndEstadoTrue(String nombre);
     List<Alimento> findByEstadoTrue();
     Optional<Alimento> findByIdAlimentoAndEstadoTrue(Long idAlimento);
 }

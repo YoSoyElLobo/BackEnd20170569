@@ -16,9 +16,7 @@ public class Alimento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAlimento;
 
-    private String nombreEspanol;
-
-    private String nombreIngles;
+    private String nombre;
 
     private Boolean estado = true;
 

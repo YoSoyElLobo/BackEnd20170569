@@ -19,9 +19,7 @@ public class Bioma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBioma;
 
-    private String nombreEspanol;
-
-    private String nombreIngles;
+    private String nombre;
 
 
 }

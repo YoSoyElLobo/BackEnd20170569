@@ -11,6 +11,6 @@ public interface AlimentoService {
     Alimento save(Alimento alimento);
     void delete(Alimento alimento);
     List<Alimento> saveAll(List<Alimento> alimentos);
-    List<Alimento> findByNombreEspanol(String nombre);
+    List<Alimento> findByNombre(String nombre);
     Alimento findById(Long idAlimento);
 }

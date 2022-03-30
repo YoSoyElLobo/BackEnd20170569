@@ -47,8 +47,8 @@ public class PaisServiceImpl implements PaisService {
     }
 
     @Override
-    public List<Pais> findByNombreEspanol(String nombre) {
-        return paisRepository.findByNombreEspanolAndEstadoTrue(nombre);
+    public List<Pais> findByNombre(String nombre) {
+        return paisRepository.findByNombreAndEstadoTrue(nombre);
     }
 
     @Override

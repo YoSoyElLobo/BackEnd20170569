@@ -19,9 +19,7 @@ public class Material {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMaterial;
 
-    private String nombreEspanol;
-
-    private String nombreIngles;
+    private String nombre;
 
 
 }

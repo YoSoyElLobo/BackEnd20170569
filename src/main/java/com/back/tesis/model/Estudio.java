@@ -44,6 +44,10 @@ public class Estudio {
 
     private Double longitud;
 
+    private Boolean estado;
+
+    private Boolean enCurso;
+
     private String bioma;
 
     private String fuente;
@@ -52,7 +56,7 @@ public class Estudio {
 
     private String NCBISampleClassification;
 
-    private String metodoSecuenciacion;
+    private String sequencingMethod;
 
 
     @ManyToOne
@@ -61,10 +65,6 @@ public class Estudio {
 
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioEstudio> listUsuarioEstudio;
-
-    private Boolean enCurso;
-
-    private Boolean estado;
 
 
 
