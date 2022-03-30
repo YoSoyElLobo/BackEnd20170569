@@ -41,7 +41,7 @@ public class FarmacoController {
         RestResponse restResponse = new RestResponse();
 
         Map<String, Farmaco> response = new HashMap<>();
-        if (farmacoService.findByNombre(farmaco.getNombre()).size()>0){
+        if (farmacoService.findByNombreEspanol(farmaco.getNombreEspanol()).size()>0){
             restResponse.setStatus(HttpStatus.BAD_REQUEST);
             restResponse.setMessage("Esta farmaco ya está registrado.");
         }
@@ -69,7 +69,7 @@ public class FarmacoController {
             restResponse.setMessage("Esta farmaco no existe en el sistema.");
         }
         else {
-            farmacos = farmacoService.findByNombre(farmaco.getNombre());
+            farmacos = farmacoService.findByNombreEspanol(farmaco.getNombreEspanol());
             if (farmacos.size()>0 && farmacos.get(0).getIdFarmaco() != farmaco.getIdFarmaco()){
                 restResponse.setStatus(HttpStatus.BAD_REQUEST);
                 restResponse.setMessage("Esta farmaco ya está registrado.");

@@ -46,8 +46,8 @@ public class AlimentoServiceImpl implements AlimentoService {
     }
 
     @Override
-    public List<Alimento> findByNombre(String nombre) {
-        return alimentoRepository.findByNombreAndEstadoTrue(nombre);
+    public List<Alimento> findByNombreEspanol(String nombre) {
+        return alimentoRepository.findByNombreEspanolAndEstadoTrue(nombre);
     }
 
     @Override

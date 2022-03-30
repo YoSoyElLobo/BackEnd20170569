@@ -19,7 +19,9 @@ public class Farmaco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFarmaco;
 
-    private String nombre;
+    private String nombreEspanol;
+
+    private String nombreIngles;
 
     private Boolean estado = true;
 

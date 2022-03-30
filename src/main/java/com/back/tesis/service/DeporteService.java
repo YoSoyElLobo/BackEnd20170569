@@ -11,6 +11,6 @@ public interface DeporteService {
     Deporte save(Deporte deporte);
     void delete(Deporte deporte);
     List<Deporte> saveAll(List<Deporte> deportes);
-    List<Deporte> findByNombre(String nombre);
+    List<Deporte> findByNombreEspanol(String nombre);
     Deporte findById(Long idDeporte);
 }
