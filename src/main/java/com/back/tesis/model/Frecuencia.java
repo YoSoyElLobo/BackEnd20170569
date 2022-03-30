@@ -16,6 +16,8 @@ public class Frecuencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFrecuencia;
 
-    private String nombre;
+    private String nombreEspanol;
+
+    private String nombreIngles;
 
 }

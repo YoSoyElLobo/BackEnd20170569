@@ -19,7 +19,9 @@ public class Pais {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPais;
 
-    private String nombre;
+    private String nombreEspanol;
+
+    private String nombreIngles;
 
     private Boolean estado = true;
 

@@ -47,8 +47,8 @@ public class DeporteServiceImpl implements DeporteService {
     }
 
     @Override
-    public List<Deporte> findByNombre(String nombre) {
-        return deporteRepository.findByNombreAndEstadoTrue(nombre);
+    public List<Deporte> findByNombreEspanol(String nombre) {
+        return deporteRepository.findByNombreEspanolAndEstadoTrue(nombre);
     }
 
     @Override

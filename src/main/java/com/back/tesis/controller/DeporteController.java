@@ -41,7 +41,7 @@ public class DeporteController {
         RestResponse restResponse = new RestResponse();
 
         Map<String, Deporte> response = new HashMap<>();
-        if (deporteService.findByNombre(deporte.getNombre()).size()>0){
+        if (deporteService.findByNombreEspanol(deporte.getNombreEspanol()).size()>0){
             restResponse.setStatus(HttpStatus.BAD_REQUEST);
             restResponse.setMessage("Esta deporte ya está registrado.");
         }
@@ -69,7 +69,7 @@ public class DeporteController {
             restResponse.setMessage("Esta deporte no existe en el sistema.");
         }
         else {
-            deportes = deporteService.findByNombre(deporte.getNombre());
+            deportes = deporteService.findByNombreEspanol(deporte.getNombreEspanol());
             if (deportes.size()>0 && deportes.get(0).getIdDeporte() != deporte.getIdDeporte()){
                 restResponse.setStatus(HttpStatus.BAD_REQUEST);
                 restResponse.setMessage("Esta deporte ya está registrado.");

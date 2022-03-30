@@ -19,7 +19,9 @@ public class Deporte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDeporte;
 
-    private String nombre;
+    private String nombreEspanol;
+
+    private String nombreIngles;
 
     private Boolean estado = true;
 

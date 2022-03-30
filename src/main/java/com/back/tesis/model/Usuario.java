@@ -1,11 +1,13 @@
 package com.back.tesis.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,6 +31,8 @@ public class Usuario {
 
     private String correoElectronico;
 
+    private Character sexo;
+
     @ManyToOne
     @JoinColumn(name = "id_pais")
     private Pais nacionalidad;
@@ -38,11 +42,12 @@ public class Usuario {
 
     private String telefono;
 
-    private ZonedDateTime fechaNacimiento;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    private Date fechaNacimiento;
 
-    private Long peso;
+    private Integer peso;
 
-    private Long talla;
+    private Integer talla;
 
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioEnfermedad> listUsuarioEnfermedad;
@@ -52,6 +57,9 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioDeporte> listUsuarioDeporte;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioAlimento> listUsuarioAlimento;
 
     private Boolean estado = true;
 

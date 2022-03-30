@@ -1,6 +1,7 @@
 package com.back.tesis.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,6 @@ public class UsuarioEstudio {
 
     @ManyToOne
     @JoinColumn(name = "id_estudio")
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Estudio estudio;
 }

@@ -46,8 +46,8 @@ public class FarmacoServiceImpl implements FarmacoService {
     }
 
     @Override
-    public List<Farmaco> findByNombre(String nombre) {
-        return farmacoRepository.findByNombreAndEstadoTrue(nombre);
+    public List<Farmaco> findByNombreEspanol(String nombre) {
+        return farmacoRepository.findByNombreEspanolAndEstadoTrue(nombre);
     }
 
     @Override

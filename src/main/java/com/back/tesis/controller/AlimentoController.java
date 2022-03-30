@@ -41,7 +41,7 @@ public class AlimentoController {
         RestResponse restResponse = new RestResponse();
 
         Map<String, Alimento> response = new HashMap<>();
-        if (alimentoService.findByNombre(alimento.getNombre()).size()>0){
+        if (alimentoService.findByNombreEspanol(alimento.getNombreEspanol()).size()>0){
             restResponse.setStatus(HttpStatus.BAD_REQUEST);
             restResponse.setMessage("Esta alimento ya está registrado.");
         }
@@ -69,7 +69,7 @@ public class AlimentoController {
             restResponse.setMessage("Esta alimento no existe en el sistema.");
         }
         else {
-            alimentos = alimentoService.findByNombre(alimento.getNombre());
+            alimentos = alimentoService.findByNombreEspanol(alimento.getNombreEspanol());
             if (alimentos.size()>0 && alimentos.get(0).getIdAlimento() != alimento.getIdAlimento()){
                 restResponse.setStatus(HttpStatus.BAD_REQUEST);
                 restResponse.setMessage("Esta alimento ya está registrado.");

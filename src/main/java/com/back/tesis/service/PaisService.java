@@ -11,6 +11,6 @@ public interface PaisService {
     Pais save(Pais pais);
     void delete(Pais pais);
     List<Pais> saveAll(List<Pais> paises);
-    List<Pais> findByNombre(String nombre);
+    List<Pais> findByNombreEspanol(String nombre);
     Pais findById(Long idPais);
 }

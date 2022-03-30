@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DeporteRepository extends JpaRepository<Deporte, Long> {
-    List<Deporte> findByNombreAndEstadoTrue(String nombre);
+    List<Deporte> findByNombreEspanolAndEstadoTrue(String nombre);
+    List<Deporte> findByNombreInglesAndEstadoTrue(String nombre);
     List<Deporte> findByEstadoTrue();
     Optional<Deporte> findByIdDeporteAndEstadoTrue(Long idDeporte);
 }
