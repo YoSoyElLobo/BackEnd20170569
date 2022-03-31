@@ -19,7 +19,7 @@ public class UsuarioDeporte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuarioEnfermedad;
+    private Long idUsuarioDeporte;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")

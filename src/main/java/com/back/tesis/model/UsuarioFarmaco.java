@@ -30,11 +30,13 @@ public class UsuarioFarmaco {
     @JoinColumn(name = "id_enfermedad")
     private Farmaco farmaco;
 
-    private Long cantidad;
+    private Integer cantidad;
 
     @ManyToOne
     @JoinColumn(name = "id_frecuencia")
     private Frecuencia frecuencia;
+
+    private Integer dosis;
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date fechaInicio;
