@@ -43,7 +43,7 @@ public class AlimentoController {
         Map<String, Alimento> response = new HashMap<>();
         if (alimentoService.findByNombreEspanol(alimento.getNombreEspanol()).size()>0){
             restResponse.setStatus(HttpStatus.BAD_REQUEST);
-            restResponse.setMessage("Esta alimento ya está registrado.");
+            restResponse.setMessage("Este alimento ya está registrado.");
         }
         else{
             response.put("alimento", alimentoService.create(alimento));
@@ -66,13 +66,13 @@ public class AlimentoController {
         Map<String, Alimento> response = new HashMap<>();
         if (alimentoService.findById(alimento.getIdAlimento())==null) {
             restResponse.setStatus(HttpStatus.NOT_FOUND);
-            restResponse.setMessage("Esta alimento no existe en el sistema.");
+            restResponse.setMessage("Este alimento no existe en el sistema.");
         }
         else {
             alimentos = alimentoService.findByNombreEspanol(alimento.getNombreEspanol());
             if (alimentos.size()>0 && alimentos.get(0).getIdAlimento() != alimento.getIdAlimento()){
                 restResponse.setStatus(HttpStatus.BAD_REQUEST);
-                restResponse.setMessage("Esta alimento ya está registrado.");
+                restResponse.setMessage("Este alimento ya está registrado.");
             }
             else{
                 response.put("alimento", alimentoService.update(alimento));
@@ -93,7 +93,7 @@ public class AlimentoController {
         Alimento alimento = alimentoService.findById(idAlimento);
         if (alimento==null) {
             restResponse.setStatus(HttpStatus.NOT_FOUND);
-            restResponse.setMessage("Esta alimento no existe en el sistema.");
+            restResponse.setMessage("Este alimento no existe en el sistema.");
         }
         else{
             alimentoService.delete(alimento);

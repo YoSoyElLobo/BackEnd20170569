@@ -45,9 +45,19 @@ public class Usuario {
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date fechaNacimiento;
 
-    private Integer peso;
+    private String documentoConsentimiento;
 
-    private Integer talla;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    private Date fechaConsentimiento;
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    private Date fechaRetiro;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Peso> listPeso;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Talla> listTalla;
 
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioEnfermedad> listUsuarioEnfermedad;
