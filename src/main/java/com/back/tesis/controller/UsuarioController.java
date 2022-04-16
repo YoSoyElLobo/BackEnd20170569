@@ -1,6 +1,7 @@
 package com.back.tesis.controller;
 
 import com.back.tesis.model.Usuario;
+import com.back.tesis.model.Usuario;
 import com.back.tesis.response.RestResponse;
 import com.back.tesis.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,6 +122,21 @@ public class UsuarioController {
             restResponse.setPayload(response);
             restResponse.setMessage("Se encontró el usuario.");
         }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @PostMapping("/createAll")
+    public ResponseEntity<RestResponse> createAll(@RequestBody List<Usuario> usuarios){
+        RestResponse restResponse = new RestResponse();
+
+        Map<String, List<Usuario>> response = new HashMap<>();
+        response.put("usuarios", usuarioService.saveAll(usuarios));
+        restResponse.setStatus(HttpStatus.OK);
+        restResponse.setPayload(response);
+        restResponse.setMessage("Se crearon los usuarios.");
 
         return ResponseEntity
                 .status(restResponse.getStatus())
