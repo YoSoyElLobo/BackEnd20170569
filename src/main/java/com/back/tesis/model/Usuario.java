@@ -53,6 +53,12 @@ public class Usuario {
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date fechaRetiro;
 
+    private Boolean enEspera;
+
+    private Boolean aprobado;
+
+    private String motivoRechazo;
+
     @OneToMany(mappedBy = "usuario")
     private List<Peso> listPeso;
 

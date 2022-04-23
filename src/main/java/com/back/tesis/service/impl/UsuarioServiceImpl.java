@@ -54,4 +54,24 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario findById(Long idEnfermedad) {
         return usuarioRepository.findByIdUsuarioAndEstadoTrue(idEnfermedad).orElse(null);
     }
+
+    @Override
+    public List<Usuario> findEnEspera() {
+        return usuarioRepository.findByEstadoTrueAndEnEsperaTrue();
+    }
+
+    @Override
+    public Usuario aprobarConsentimiento(Usuario usuario) {
+        usuario.setEnEspera(false);
+        usuario.setAprobado(true);
+        return save(usuario);
+    }
+
+    @Override
+    public Usuario rechazarConsentimiento(Usuario usuario, Usuario usuarioAntiguo) {
+        usuarioAntiguo.setEnEspera(false);
+        usuarioAntiguo.setAprobado(false);
+        usuarioAntiguo.setMotivoRechazo(usuario.getMotivoRechazo());
+        return save(usuarioAntiguo);
+    }
 }

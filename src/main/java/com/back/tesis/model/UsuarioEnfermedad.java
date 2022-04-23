@@ -31,7 +31,9 @@ public class UsuarioEnfermedad {
     private Enfermedad enfermedad;
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    private Date fechaDeteccion;
+    private Date fechaDiagnostico;
+
+
 
     private Boolean estado;
 

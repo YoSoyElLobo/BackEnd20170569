@@ -143,4 +143,67 @@ public class UsuarioController {
                 .body(restResponse);
     }
 
+    @GetMapping("/listEspera")
+    public ResponseEntity<RestResponse> listEspera(){
+        RestResponse restResponse = new RestResponse();
+
+        Map<String, List<Usuario>> response = new HashMap<>();
+        response.put("usuarios", usuarioService.findEnEspera());
+
+        restResponse.setStatus(HttpStatus.OK);
+        restResponse.setPayload(response);
+        restResponse.setMessage("Se listan todos los usuarios");
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @PostMapping("/aprobarConsentimiento")
+    public ResponseEntity<RestResponse> aprobarConsentimiento(@RequestParam Long idUsuario) {
+
+        RestResponse restResponse = new RestResponse();
+        Map<String, Usuario> response = new HashMap<>();
+
+        Usuario usuario = usuarioService.findById(idUsuario);
+        if (usuario==null) {
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Esta usuario no existe en el sistema.");
+        }
+        else {
+            response.put("usuario", usuarioService.aprobarConsentimiento(usuario));
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se encontró el usuario.");
+        }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @PostMapping("/rechazarConsentimiento")
+    public ResponseEntity<RestResponse> rechazarConsentimiento(@RequestBody Usuario usuario) {
+
+        RestResponse restResponse = new RestResponse();
+        Map<String, Usuario> response = new HashMap<>();
+
+        Usuario usuarioAntiguo = usuarioService.findById(usuario.getIdUsuario());
+        if (usuarioAntiguo==null) {
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Esta usuario no existe en el sistema.");
+        }
+        else {
+            response.put("usuario", usuarioService.rechazarConsentimiento(usuario, usuarioAntiguo));
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se encontró el usuario.");
+        }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+
 }

@@ -13,4 +13,9 @@ public interface UsuarioService {
     List<Usuario> saveAll(List<Usuario> usuarios);
     Usuario findByCorreoElectronico(String nombre);
     Usuario findById(Long idUsuario);
+
+    List<Usuario> findEnEspera();
+    Usuario aprobarConsentimiento(Usuario usuario);
+    Usuario rechazarConsentimiento(Usuario usuario, Usuario usuarioAntiguo);
+
 }
