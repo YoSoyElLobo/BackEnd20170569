@@ -13,6 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RestController
+@CrossOrigin(origins = "*")
+@RequestMapping("/estudio")
 public class EstudioController {
     
     @Autowired
