@@ -1,6 +1,7 @@
 package com.back.tesis.controller;
 
 import com.back.tesis.model.Estudio;
+import com.back.tesis.model.Usuario;
 import com.back.tesis.response.RestResponse;
 import com.back.tesis.service.EstudioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +97,27 @@ public class EstudioController {
             estudioService.delete(estudio);
             restResponse.setMessage("Estudio eliminado.");
             restResponse.setStatus(HttpStatus.OK);
+        }
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @GetMapping("/findById")
+    public ResponseEntity<RestResponse> findById(@RequestParam Long idEstudio) {
+        RestResponse restResponse = new RestResponse();
+        Map<String, Estudio> response = new HashMap<>();
+
+        Estudio estudio = estudioService.findById(idEstudio);
+        if (estudio==null) {
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Este estudio no existe en el sistema.");
+        }
+        else{
+            response.put("estudio", estudio);
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se encontró el estudio");
         }
         return ResponseEntity
                 .status(restResponse.getStatus())
