@@ -67,7 +67,7 @@ public class UsuarioEnfermedadController {
                 .body(restResponse);
     }
 
-    @PutMapping("/create")
+    @PutMapping("/update")
     public ResponseEntity<RestResponse> update(@RequestBody UsuarioEnfermedad usuarioEnfermedad){
         RestResponse restResponse = new RestResponse();
         Map<String, UsuarioEnfermedad> response = new HashMap<>();
