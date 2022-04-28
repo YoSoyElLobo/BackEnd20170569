@@ -79,6 +79,22 @@ public class Usuario {
 
     private Boolean estado = true;
 
-
+    public void copyUsuario (Usuario usuario){
+        if (usuario.getRol() != null && usuario.getRol().getIdRol() != 0) setRol(usuario.getRol());
+        if (usuario.getNombres() != null) setNombres(usuario.getNombres());
+        if (usuario.getApellidos() != null) setApellidos(usuario.getApellidos());
+        if (usuario.getCorreoElectronico() != null) setCorreoElectronico(usuario.getCorreoElectronico());
+        if (usuario.getSexo() != null) setSexo(usuario.getSexo());
+        if (usuario.getNacionalidad() != null && usuario.getNacionalidad().getIdPais() != 0)  setNacionalidad(usuario.getNacionalidad());
+        if (usuario.getNumeroDocumento() != null) setNumeroDocumento(usuario.getNumeroDocumento());
+        if (usuario.getTelefono() != null) setTelefono(usuario.getTelefono());
+        if (usuario.getFechaNacimiento() != null) setFechaNacimiento(usuario.getFechaNacimiento());
+        if (usuario.getDocumentoConsentimiento() != null) setDocumentoConsentimiento(usuario.getDocumentoConsentimiento());
+        if (usuario.getFechaConsentimiento() != null) setFechaConsentimiento(usuario.getFechaNacimiento());
+        if (usuario.getFechaRetiro() != null) setFechaRetiro(usuario.getFechaRetiro());
+        if (usuario.getEnEspera() != null) setEnEspera(usuario.getEnEspera());
+        if (usuario.getAprobado() != null) setAprobado(usuario.getAprobado());
+        if (usuario.getMotivoRechazo() != null) setMotivoRechazo(usuario.getMotivoRechazo());
+    }
 
 }

@@ -48,8 +48,6 @@ public class UsuarioAlimentoController {
             restResponse.setMessage("Se devuelven los alimentos del usuario");
         }
 
-
-
         return ResponseEntity
                 .status(restResponse.getStatus())
                 .body(restResponse);
@@ -80,11 +78,41 @@ public class UsuarioAlimentoController {
                 restResponse.setMessage("Este alimento ya está registrado para el usuario.");
             }
             else {
-                response.put("usuarioalimento", usuarioAlimentoService.create(usuarioAlimento));
+                response.put("usuarioAlimento", usuarioAlimentoService.create(usuarioAlimento));
                 restResponse.setPayload(response);
                 restResponse.setStatus(HttpStatus.OK);
                 restResponse.setMessage("Este alimento se creó para el usuario");
             }
+        }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<RestResponse> update(@RequestBody UsuarioAlimento usuarioAlimento){
+        RestResponse restResponse = new RestResponse();
+        Map<String, UsuarioAlimento> response = new HashMap<>();
+
+        Usuario usuario = usuarioService.findById(usuarioAlimento.getUsuario().getIdUsuario());
+        Alimento alimento = alimentoService.findById(usuarioAlimento.getAlimento().getIdAlimento());
+
+        if( usuario == null || alimento == null ){
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            if ( usuario == null ) {
+                restResponse.setMessage("Este usuario no está registrado en el sistema");
+            }
+            else {
+                restResponse.setMessage("Este alimento no está registrado en el sistema");
+            }
+        }
+        else{
+            response.put("usuarioAlimento", usuarioAlimentoService.save(usuarioAlimento));
+            restResponse.setPayload(response);
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setMessage("Este alimento se creó para el usuario");
+
         }
 
         return ResponseEntity

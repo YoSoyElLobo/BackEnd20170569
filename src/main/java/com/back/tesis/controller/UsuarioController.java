@@ -76,7 +76,8 @@ public class UsuarioController {
                 restResponse.setMessage("Esta usuario ya está registrado.");
             }
             else{
-                response.put("usuario", usuarioService.update(usuario));
+                usuarioAntiguo.copyUsuario(usuario);
+                response.put("usuario", usuarioService.update(usuarioAntiguo));
                 restResponse.setStatus(HttpStatus.OK);
                 restResponse.setPayload(response);
                 restResponse.setMessage("Se actualizó el usuario.");
