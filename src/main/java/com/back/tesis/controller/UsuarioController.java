@@ -3,7 +3,6 @@ package com.back.tesis.controller;
 import com.back.tesis.dto.UsuarioDatosGeneralesDTO;
 import com.back.tesis.dto.UsuarioRetiroDTO;
 import com.back.tesis.model.Usuario;
-import com.back.tesis.model.Usuario;
 import com.back.tesis.response.RestResponse;
 import com.back.tesis.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,23 +61,24 @@ public class UsuarioController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<RestResponse> update(@RequestBody Usuario usuario){
+    public ResponseEntity<RestResponse> update(@RequestBody Usuario usuarioNuevo){
         RestResponse restResponse = new RestResponse();
+        Usuario usuario = usuarioService.findById(usuarioNuevo.getIdUsuario());
         Usuario usuarioAntiguo;
 
         Map<String, Usuario> response = new HashMap<>();
-        if (usuarioService.findById(usuario.getIdUsuario())==null) {
+        if (usuario == null) {
             restResponse.setStatus(HttpStatus.NOT_FOUND);
             restResponse.setMessage("Esta usuario no existe en el sistema.");
         }
         else {
-            usuarioAntiguo = usuarioService.findByCorreoElectronico(usuario.getCorreoElectronico());
-            if (usuarioAntiguo.getIdUsuario() != usuario.getIdUsuario()){
+            usuarioAntiguo = usuarioService.findByCorreoElectronico(usuarioNuevo.getCorreoElectronico());
+            if (usuarioAntiguo != null && usuarioAntiguo.getIdUsuario() != usuario.getIdUsuario()){
                 restResponse.setStatus(HttpStatus.BAD_REQUEST);
                 restResponse.setMessage("Esta usuario ya está registrado.");
             }
             else{
-                usuarioAntiguo.copyUsuario(usuario);
+                usuario.copyUsuario(usuarioNuevo);
                 response.put("usuario", usuarioService.update(usuarioAntiguo));
                 restResponse.setStatus(HttpStatus.OK);
                 restResponse.setPayload(response);
@@ -243,11 +243,18 @@ public class UsuarioController {
             restResponse.setMessage("Esta usuario no existe en el sistema.");
         }
         else {
-            usuario.copyUsuario(usuarioDTO);
-            response.put("usuario", usuarioService.update(usuario));
-            restResponse.setStatus(HttpStatus.OK);
-            restResponse.setPayload(response);
-            restResponse.setMessage("Se encontró el usuario.");
+            Usuario usuarioAntiguo = usuarioService.findByCorreoElectronico(usuario.getCorreoElectronico());
+            if (usuarioAntiguo != null && usuarioAntiguo.getIdUsuario() != usuario.getIdUsuario()){
+                restResponse.setStatus(HttpStatus.BAD_REQUEST);
+                restResponse.setMessage("Esta correo ya está registrado.");
+            }
+            else {
+                usuario.copyUsuario(usuarioDTO);
+                response.put("usuario", usuarioService.update(usuario));
+                restResponse.setStatus(HttpStatus.OK);
+                restResponse.setPayload(response);
+                restResponse.setMessage("Se encontró el usuario.");
+            }
         }
 
         return ResponseEntity
