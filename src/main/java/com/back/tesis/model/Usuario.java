@@ -1,5 +1,7 @@
 package com.back.tesis.model;
 
+import com.back.tesis.dto.UsuarioDatosGeneralesDTO;
+import com.back.tesis.dto.UsuarioRetiroDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
@@ -90,10 +92,21 @@ public class Usuario {
         if (usuario.getTelefono() != null) setTelefono(usuario.getTelefono());
         if (usuario.getFechaNacimiento() != null) setFechaNacimiento(usuario.getFechaNacimiento());
         if (usuario.getDocumentoConsentimiento() != null) setDocumentoConsentimiento(usuario.getDocumentoConsentimiento());
-        if (usuario.getFechaConsentimiento() != null) setFechaConsentimiento(usuario.getFechaNacimiento());
+        if (usuario.getFechaConsentimiento() != null) setFechaConsentimiento(usuario.getFechaConsentimiento());
         if (usuario.getFechaRetiro() != null) setFechaRetiro(usuario.getFechaRetiro());
         if (usuario.getEnEspera() != null) setEnEspera(usuario.getEnEspera());
         if (usuario.getAprobado() != null) setAprobado(usuario.getAprobado());
+        if (usuario.getMotivoRechazo() != null) setMotivoRechazo(usuario.getMotivoRechazo());
+    }
+
+    public void copyUsuario (UsuarioDatosGeneralesDTO usuario){
+        if (usuario.getCorreoElectronico() != null) setCorreoElectronico(usuario.getCorreoElectronico());
+        if (usuario.getSexo() != null) setSexo(usuario.getSexo());
+        if (usuario.getTelefono() != null) setTelefono(usuario.getTelefono());
+        if (usuario.getFechaNacimiento() != null) setFechaNacimiento(usuario.getFechaNacimiento());
+    }
+
+    public void copyUsuario (UsuarioRetiroDTO usuario){
         if (usuario.getMotivoRechazo() != null) setMotivoRechazo(usuario.getMotivoRechazo());
     }
 

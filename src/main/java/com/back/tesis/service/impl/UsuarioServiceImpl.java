@@ -1,6 +1,11 @@
 package com.back.tesis.service.impl;
 
+import com.back.tesis.dto.UsuarioDatosGeneralesDTO;
+import com.back.tesis.model.Peso;
+import com.back.tesis.model.Talla;
 import com.back.tesis.model.Usuario;
+import com.back.tesis.repository.PesoRepository;
+import com.back.tesis.repository.TallaRepository;
 import com.back.tesis.repository.UsuarioRepository;
 import com.back.tesis.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +18,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PesoRepository pesoRepository;
+
+    @Autowired
+    private TallaRepository tallaRepository;
 
     @Override
     public List<Usuario> findAll() {
@@ -74,4 +85,16 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioAntiguo.setMotivoRechazo(usuario.getMotivoRechazo());
         return save(usuarioAntiguo);
     }
+
+    @Override
+    public Usuario updateDatosGenerales(Usuario usuario, UsuarioDatosGeneralesDTO usuarioDTO) {
+        Peso peso = new Peso(usuario, usuarioDTO.getPeso());
+        Talla talla = new Talla(usuario, usuarioDTO.getTalla());
+        pesoRepository.save(peso);
+        tallaRepository.save(talla);
+        usuario.copyUsuario(usuarioDTO);
+        return save(usuario);
+    }
+
+
 }

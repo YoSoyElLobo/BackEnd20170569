@@ -15,6 +15,12 @@ import java.util.Date;
 @NoArgsConstructor
 public class Talla {
 
+    public Talla(Usuario usuario, Integer cantidad){
+        setUsuario(usuario);
+        setCantidad(cantidad);
+        setFechaModificacion(new Date());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTalla;

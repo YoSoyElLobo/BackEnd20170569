@@ -1,5 +1,6 @@
 package com.back.tesis.service;
 
+import com.back.tesis.dto.UsuarioDatosGeneralesDTO;
 import com.back.tesis.model.Usuario;
 
 import java.util.List;
@@ -17,5 +18,6 @@ public interface UsuarioService {
     List<Usuario> findEnEspera();
     Usuario aprobarConsentimiento(Usuario usuario);
     Usuario rechazarConsentimiento(Usuario usuario, Usuario usuarioAntiguo);
+    Usuario updateDatosGenerales (Usuario usuario, UsuarioDatosGeneralesDTO usuarioDTO);
 
 }

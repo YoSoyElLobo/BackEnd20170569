@@ -1,5 +1,7 @@
 package com.back.tesis.controller;
 
+import com.back.tesis.dto.UsuarioDatosGeneralesDTO;
+import com.back.tesis.dto.UsuarioRetiroDTO;
 import com.back.tesis.model.Usuario;
 import com.back.tesis.model.Usuario;
 import com.back.tesis.response.RestResponse;
@@ -196,6 +198,53 @@ public class UsuarioController {
         }
         else {
             response.put("usuario", usuarioService.rechazarConsentimiento(usuario, usuarioAntiguo));
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se encontró el usuario.");
+        }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @PutMapping("/updateDatosGenerales")
+    public ResponseEntity<RestResponse> updateDatosGenerales(@RequestBody UsuarioDatosGeneralesDTO usuarioDTO) {
+
+        RestResponse restResponse = new RestResponse();
+        Map<String, Usuario> response = new HashMap<>();
+
+        Usuario usuario = usuarioService.findById(usuarioDTO.getIdUsuario());
+        if (usuario==null) {
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Esta usuario no existe en el sistema.");
+        }
+        else {
+            response.put("usuario", usuarioService.updateDatosGenerales(usuario, usuarioDTO));
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se encontró el usuario.");
+        }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @PutMapping("/retiro")
+    public ResponseEntity<RestResponse> retiro(@RequestBody UsuarioRetiroDTO usuarioDTO) {
+
+        RestResponse restResponse = new RestResponse();
+        Map<String, Usuario> response = new HashMap<>();
+
+        Usuario usuario = usuarioService.findById(usuarioDTO.getIdUsuario());
+        if (usuario==null) {
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Esta usuario no existe en el sistema.");
+        }
+        else {
+            usuario.copyUsuario(usuarioDTO);
+            response.put("usuario", usuarioService.update(usuario));
             restResponse.setStatus(HttpStatus.OK);
             restResponse.setPayload(response);
             restResponse.setMessage("Se encontró el usuario.");
