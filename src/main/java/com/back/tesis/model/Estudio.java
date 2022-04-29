@@ -68,7 +68,7 @@ public class Estudio {
 
     private Boolean enCurso = true;
 
-    private Boolean estado = false;
+    private Boolean estado = true;
 
 
 
