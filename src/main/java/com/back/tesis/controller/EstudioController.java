@@ -68,16 +68,12 @@ public class EstudioController {
         RestResponse restResponse = new RestResponse();
 
         Map<String, Estudio> response = new HashMap<>();
-        if (estudioService.findByNombreEspanol(estudio.getNombreEspanol()).size()>0){
-            restResponse.setStatus(HttpStatus.BAD_REQUEST);
-            restResponse.setMessage("Este estudio ya está registrado.");
-        }
-        else{
-            response.put("estudio", estudioService.create(estudio));
-            restResponse.setStatus(HttpStatus.OK);
-            restResponse.setPayload(response);
-            restResponse.setMessage("Se creó el estudio.");
-        }
+        
+		response.put("estudio", estudioService.create(estudio));
+		restResponse.setStatus(HttpStatus.OK);
+		restResponse.setPayload(response);
+		restResponse.setMessage("Se creó el estudio.");
+        
 
 
         return ResponseEntity
@@ -95,18 +91,11 @@ public class EstudioController {
             restResponse.setStatus(HttpStatus.NOT_FOUND);
             restResponse.setMessage("Este estudio no existe en el sistema.");
         }
-        else {
-            estudios = estudioService.findByNombreEspanol(estudio.getNombreEspanol());
-            if (estudios.size()>0 && estudios.get(0).getIdEstudio() != estudio.getIdEstudio()){
-                restResponse.setStatus(HttpStatus.BAD_REQUEST);
-                restResponse.setMessage("Este estudio ya está registrado.");
-            }
-            else{
+        else { 
                 response.put("estudio", estudioService.update(estudio));
                 restResponse.setStatus(HttpStatus.OK);
                 restResponse.setPayload(response);
-                restResponse.setMessage("Se actualizó el estudio.");
-            }
+
         }
 
         return ResponseEntity
