@@ -4,6 +4,7 @@ import com.back.tesis.model.Estudio;
 import com.back.tesis.model.Usuario;
 import com.back.tesis.response.RestResponse;
 import com.back.tesis.service.EstudioService;
+import com.back.tesis.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ public class EstudioController {
     @Autowired
     private EstudioService estudioService;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @GetMapping("/list")
     public ResponseEntity<RestResponse> list(){
         RestResponse restResponse = new RestResponse();
@@ -35,6 +39,28 @@ public class EstudioController {
         return ResponseEntity
                 .status(restResponse.getStatus())
                 .body(restResponse);
+    }
+
+    @GetMapping("/listByUsuario")
+    public ResponseEntity<RestResponse> listByUsuario(@RequestParam Long idUsuario){
+        RestResponse restResponse = new RestResponse();
+        Map<String, List<Estudio>> response = new HashMap<>();
+
+        Usuario usuario = usuarioService.findById(idUsuario);
+        if (usuario == null){
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Esta usuario no existe en el sistema.");
+        }
+        else {
+            response.put("estudios", estudioService.findByUsuario(usuario));
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se listan todos los estudios del usuario");
+        }
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+
     }
 
     @PostMapping("/create")

@@ -96,5 +96,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         return save(usuario);
     }
 
+    @Override
+    public Usuario retiro(Usuario usuario) {
+        usuario.setRetirado(true);
+        usuario.setEstado(false);
+        return save(usuario);
+    }
+
 
 }

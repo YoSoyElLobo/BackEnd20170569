@@ -1,6 +1,7 @@
 package com.back.tesis.service.impl;
 
 import com.back.tesis.model.Estudio;
+import com.back.tesis.model.Usuario;
 import com.back.tesis.repository.EstudioRepository;
 import com.back.tesis.service.EstudioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ public class EstudioServiceImpl implements EstudioService {
     @Override
     public List<Estudio> findAll() {
         return estudioRepository.findByEstadoTrue();
+    }
+
+    @Override
+    public List<Estudio> findByUsuario(Usuario usuario) {
+        return estudioRepository.findByInvestigador(usuario);
     }
 
     @Override

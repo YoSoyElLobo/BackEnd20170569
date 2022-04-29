@@ -44,11 +44,15 @@ public class Estudio {
 
     private Double longitud;
 
-    private String bioma;
+    @ManyToOne
+    @JoinColumn(name = "id_bioma")
+    private Bioma bioma;
 
     private String fuente;
 
-    private String material;
+    @ManyToOne
+    @JoinColumn(name = "id_material")
+    private Material material;
 
     private String NCBISampleClassification;
 

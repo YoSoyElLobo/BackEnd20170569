@@ -1,6 +1,7 @@
 package com.back.tesis.repository;
 
 import com.back.tesis.model.Estudio;
+import com.back.tesis.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface EstudioRepository extends JpaRepository<Estudio, Long> {
     List<Estudio> findByNombreInglesAndEstadoTrue(String nombre);
     List<Estudio> findByEstadoTrue();
     Optional<Estudio> findByIdEstudioAndEstadoTrue(Long idEstudio);
+    List<Estudio> findByInvestigador(Usuario usuario);
 }

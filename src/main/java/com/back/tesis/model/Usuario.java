@@ -59,6 +59,8 @@ public class Usuario {
 
     private Boolean aprobado;
 
+    private Boolean retirado = false;
+
     private String motivoRechazo;
 
     @OneToMany(mappedBy = "usuario")

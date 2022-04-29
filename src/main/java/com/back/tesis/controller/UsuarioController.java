@@ -250,7 +250,7 @@ public class UsuarioController {
             }
             else {
                 usuario.copyUsuario(usuarioDTO);
-                response.put("usuario", usuarioService.update(usuario));
+                response.put("usuario", usuarioService.retiro(usuario));
                 restResponse.setStatus(HttpStatus.OK);
                 restResponse.setPayload(response);
                 restResponse.setMessage("Se encontró el usuario.");
