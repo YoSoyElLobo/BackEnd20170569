@@ -54,7 +54,7 @@ public class Estudio {
     @JoinColumn(name = "id_material")
     private Material material;
 
-    private String NCBISampleClassification;
+    private String ncbiSampleClassification;
 
     private String metodoSecuenciacion;
 
