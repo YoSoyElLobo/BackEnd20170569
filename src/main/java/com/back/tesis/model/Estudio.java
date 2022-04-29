@@ -66,9 +66,9 @@ public class Estudio {
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioEstudio> listUsuarioEstudio;
 
-    private Boolean enCurso;
+    private Boolean enCurso = true;
 
-    private Boolean estado;
+    private Boolean estado = false;
 
 
 
