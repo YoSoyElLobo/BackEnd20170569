@@ -40,9 +40,9 @@ public class Estudio {
 
     private String resultados;
 
-    private Double latitud;
+    private String latitud;
 
-    private Double longitud;
+    private String longitud;
 
     @ManyToOne
     @JoinColumn(name = "id_bioma")
