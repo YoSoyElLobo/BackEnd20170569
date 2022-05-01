@@ -28,8 +28,10 @@ public class Estudio {
 
     private String nombreIngles;
 
+    @Lob
     private String descripcionEspanol;
 
+    @Lob
     private String descripcionIngles;
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
