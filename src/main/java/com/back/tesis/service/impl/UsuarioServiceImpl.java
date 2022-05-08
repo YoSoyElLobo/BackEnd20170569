@@ -103,5 +103,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         return save(usuario);
     }
 
+    @Override
+    public Usuario registrarConsentimiento(Usuario usuario) {
+        usuario.setEnEspera(true);
+        return save(usuario);
+    }
+
 
 }

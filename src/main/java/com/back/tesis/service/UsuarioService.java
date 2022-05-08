@@ -20,5 +20,6 @@ public interface UsuarioService {
     Usuario rechazarConsentimiento(Usuario usuario, Usuario usuarioAntiguo);
     Usuario updateDatosGenerales (Usuario usuario, UsuarioDatosGeneralesDTO usuarioDTO);
     Usuario retiro(Usuario usuario);
+    Usuario registrarConsentimiento(Usuario usuario);
 
 }

@@ -262,5 +262,31 @@ public class UsuarioController {
                 .body(restResponse);
     }
 
+    @PutMapping("/consentimento")
+    public ResponseEntity<RestResponse> retiro(@RequestBody Usuario usuario) {
+
+        RestResponse restResponse = new RestResponse();
+        Map<String, Usuario> response = new HashMap<>();
+
+        Usuario usuarioAntiguo = usuarioService.findById(usuario.getIdUsuario());
+        if (usuarioAntiguo==null) {
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Este usuario no existe en el sistema.");
+        }
+        else {
+
+            usuarioAntiguo.copyUsuario(usuario);
+            response.put("usuario", usuarioService.registrarConsentimiento(usuarioAntiguo));
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se actualizó el usuario.");
+
+        }
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
 
 }
