@@ -263,7 +263,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/consentimento")
-    public ResponseEntity<RestResponse> retiro(@RequestBody Usuario usuario) {
+    public ResponseEntity<RestResponse> consentimiento(@RequestBody Usuario usuario) {
 
         RestResponse restResponse = new RestResponse();
         Map<String, Usuario> response = new HashMap<>();
