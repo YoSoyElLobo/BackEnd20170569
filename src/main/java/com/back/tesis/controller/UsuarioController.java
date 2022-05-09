@@ -262,7 +262,7 @@ public class UsuarioController {
                 .body(restResponse);
     }
 
-    @PutMapping("/consentimento")
+    @PutMapping("/consentimiento")
     public ResponseEntity<RestResponse> consentimiento(@RequestBody Usuario usuario) {
 
         RestResponse restResponse = new RestResponse();
