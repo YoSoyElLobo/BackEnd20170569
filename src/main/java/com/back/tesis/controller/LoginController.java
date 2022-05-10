@@ -1,5 +1,6 @@
 package com.back.tesis.controller;
 
+import com.back.tesis.model.Rol;
 import com.back.tesis.model.Usuario;
 import com.back.tesis.response.RestResponse;
 import com.back.tesis.service.UsuarioService;
@@ -57,8 +58,13 @@ public class LoginController {
             String email = payload.getEmail();
             usuario = usuarioService.findByCorreoElectronico(email);
             if (usuario == null){
-                restResponse.setStatus(HttpStatus.NOT_FOUND);
-                restResponse.setMessage("No se encontró al usuario");
+                usuario = new Usuario();
+                usuario.setRol(new Rol());
+                usuario.getRol().setIdRol(3L);
+                usuario.setCorreoElectronico(email);
+                restResponse.setPayload(usuarioService.create(usuario));
+                restResponse.setStatus(HttpStatus.OK);
+                restResponse.setMessage("Se encontró al usuario");
                 // acá debería registrarlo como participante
             }
             else{
