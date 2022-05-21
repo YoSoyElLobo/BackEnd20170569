@@ -41,8 +41,8 @@ public class EstudioController {
                 .body(restResponse);
     }
 
-    @GetMapping("/listByUsuario")
-    public ResponseEntity<RestResponse> listByUsuario(@RequestParam Long idUsuario){
+    @GetMapping("/listByInvestigador")
+    public ResponseEntity<RestResponse> listByInvestigador(@RequestParam Long idUsuario){
         RestResponse restResponse = new RestResponse();
         Map<String, List<Estudio>> response = new HashMap<>();
 
@@ -52,7 +52,7 @@ public class EstudioController {
             restResponse.setMessage("Esta usuario no existe en el sistema.");
         }
         else {
-            response.put("estudios", estudioService.findByUsuario(usuario));
+            response.put("estudios", estudioService.findByInvestigador(usuario));
             restResponse.setStatus(HttpStatus.OK);
             restResponse.setPayload(response);
             restResponse.setMessage("Se listan todos los estudios del usuario");
@@ -141,6 +141,31 @@ public class EstudioController {
                 .status(restResponse.getStatus())
                 .body(restResponse);
     }
+
+    @GetMapping("/listByParticipante")
+    public ResponseEntity<RestResponse> listByParticipante(@RequestParam Long idUsuario){
+        RestResponse restResponse = new RestResponse();
+        Map<String, List<Estudio>> response = new HashMap<>();
+
+        Usuario usuario = usuarioService.findById(idUsuario);
+        if (usuario == null){
+            restResponse.setStatus(HttpStatus.NOT_FOUND);
+            restResponse.setMessage("Esta usuario no existe en el sistema.");
+        }
+        else {
+            response.put("estudios", estudioService.findByParticipante(usuario));
+            restResponse.setStatus(HttpStatus.OK);
+            restResponse.setPayload(response);
+            restResponse.setMessage("Se listan todos los estudios del usuario");
+        }
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+
+    }
+
+
+
 
 
 }

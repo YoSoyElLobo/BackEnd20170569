@@ -11,4 +11,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     List<Usuario> findByEstadoTrue();
     List<Usuario> findByEstadoTrueAndEnEsperaTrue();
     Optional<Usuario> findByIdUsuarioAndEstadoTrue(Long idUsuario);
+    List<Usuario> findByRol_IdRolAndEstadoTrue(Long idRol);
 }

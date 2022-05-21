@@ -31,6 +31,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public List<Usuario> findByIdRol(Long idRol) {
+        return usuarioRepository.findByRol_IdRolAndEstadoTrue(idRol);
+    }
+
+    @Override
     public Usuario create(Usuario usuario) {
         return save(usuario);
     }

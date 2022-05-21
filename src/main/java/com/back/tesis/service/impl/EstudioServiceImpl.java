@@ -21,7 +21,7 @@ public class EstudioServiceImpl implements EstudioService {
     }
 
     @Override
-    public List<Estudio> findByUsuario(Usuario usuario) {
+    public List<Estudio> findByInvestigador(Usuario usuario) {
         return estudioRepository.findByInvestigador(usuario);
     }
 
@@ -54,6 +54,11 @@ public class EstudioServiceImpl implements EstudioService {
     @Override
     public List<Estudio> findByNombreEspanol(String nombre) {
         return estudioRepository.findByNombreEspanolAndEstadoTrue(nombre);
+    }
+
+    @Override
+    public List<Estudio> findByParticipante(Usuario usuario) {
+        return estudioRepository.findByParticipante(usuario.getIdUsuario());
     }
 
     @Override
