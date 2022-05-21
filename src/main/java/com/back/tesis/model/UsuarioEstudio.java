@@ -33,7 +33,7 @@ public class UsuarioEstudio {
 
     private Boolean aceptado = false;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date fechaMuestreo;
 
     public void copyUsuarioEstudio(UsuarioEstudio usuarioEstudio){
