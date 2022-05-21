@@ -65,7 +65,7 @@ public class Estudio {
     @JoinColumn(name = "id_pais")
     private Pais pais;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "estudio")
     private List<UsuarioEstudio> listUsuarioEstudio;
 
     private Boolean enCurso = true;
