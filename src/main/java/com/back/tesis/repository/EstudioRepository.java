@@ -17,7 +17,7 @@ public interface EstudioRepository extends JpaRepository<Estudio, Long> {
 
     @Query(nativeQuery = true,
             value = "SELECT * FROM estudio e " +
-                    "INNER JOIN usuarioestudio ue ON e.idEstudio = ue.idEstudio " +
-                    "WHERE ue.idUsuario = ?1;")
+                    "INNER JOIN usuario_estudio ue ON e.id_estudio = ue.id_estudio " +
+                    "WHERE ue.id_usuario = ?1 ;")
     List<Estudio> findByParticipante(Long idUsuario);
 }
