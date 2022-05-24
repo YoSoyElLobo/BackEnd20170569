@@ -14,4 +14,6 @@ public interface UsuarioEstudioService {
     List<UsuarioEstudio> saveAll(List<UsuarioEstudio> listUsuarioEstudio);
     UsuarioEstudio findById(Long idUsuarioEstudio);
     UsuarioEstudio findByUsuarioAndEstudio(Usuario usuario, Estudio estudio);
+    UsuarioEstudio aprobar(UsuarioEstudio usuarioEstudio);
+    void rechazar(UsuarioEstudio usuarioEstudio);
 }

@@ -51,4 +51,15 @@ public class UsuarioEstudioServiceImpl implements UsuarioEstudioService {
         return usuarioEstudioRepository.findByUsuarioAndEstudio(usuario, estudio).orElse(null);
     }
 
+    @Override
+    public UsuarioEstudio aprobar(UsuarioEstudio usuarioEstudio) {
+        usuarioEstudio.setAceptado(true);
+        return update(usuarioEstudio);
+    }
+
+    @Override
+    public void rechazar(UsuarioEstudio usuarioEstudio) {
+         delete(usuarioEstudio);
+    }
+
 }

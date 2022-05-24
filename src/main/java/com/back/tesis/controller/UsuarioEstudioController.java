@@ -117,4 +117,36 @@ public class UsuarioEstudioController {
                 .status(restResponse.getStatus())
                 .body(restResponse);
     }
+
+    @PostMapping("/aprobar")
+    public ResponseEntity<RestResponse> aprobar(@RequestParam Long idUsuarioEstudio){
+        RestResponse restResponse = new RestResponse();
+        Map<String, UsuarioEstudio> response = new HashMap<>();
+        UsuarioEstudio usuarioEstudio = usuarioEstudioService.findById(idUsuarioEstudio);
+
+        response.put("usuarioEstudio", usuarioEstudioService.aprobar(usuarioEstudio));
+        restResponse.setStatus(HttpStatus.OK);
+        restResponse.setPayload(response);
+        restResponse.setMessage("Se aprobó la invitación al estudio.");
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
+    @DeleteMapping("/rechazar")
+    public ResponseEntity<RestResponse> rechazar(@RequestParam Long idUsuarioEstudio){
+        RestResponse restResponse = new RestResponse();
+        Map<String, UsuarioEstudio> response = new HashMap<>();
+        UsuarioEstudio usuarioEstudio = usuarioEstudioService.findById(idUsuarioEstudio);
+        usuarioEstudioService.delete(usuarioEstudio);
+
+        restResponse.setStatus(HttpStatus.OK);
+        restResponse.setPayload(response);
+        restResponse.setMessage("Se rechazó la invitación al estudio.");
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
 }
