@@ -304,8 +304,8 @@ public class UsuarioController {
                 .body(restResponse);
     }
 
-    @GetMapping("/listByRolAceptado")
-    public ResponseEntity<RestResponse> listByRolAceptado(@RequestParam Long idRol){
+    @GetMapping("/listByRolAprobado")
+    public ResponseEntity<RestResponse> listByRolAprobado(@RequestParam Long idRol){
         RestResponse restResponse = new RestResponse();
 
         Map<String, List<Usuario>> response = new HashMap<>();
