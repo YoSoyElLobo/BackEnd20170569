@@ -37,7 +37,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<Usuario> findByIdRolAceptado(Long idRol) {
-        return usuarioRepository.findByRol_IdRolAndEstadoTrueAndAAndAprobadoTrue(idRol);
+        return usuarioRepository.findByRol_IdRolAndEstadoTrueAndAprobadoTrue(idRol);
     }
 
     @Override
