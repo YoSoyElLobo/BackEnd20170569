@@ -304,5 +304,21 @@ public class UsuarioController {
                 .body(restResponse);
     }
 
+    @GetMapping("/listByRolAceptado")
+    public ResponseEntity<RestResponse> listByRolAceptado(@RequestParam Long idRol){
+        RestResponse restResponse = new RestResponse();
+
+        Map<String, List<Usuario>> response = new HashMap<>();
+        response.put("usuarios", usuarioService.findByIdRolAceptado(idRol));
+
+        restResponse.setStatus(HttpStatus.OK);
+        restResponse.setPayload(response);
+        restResponse.setMessage("Se listan todos los usuarios");
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
 
 }

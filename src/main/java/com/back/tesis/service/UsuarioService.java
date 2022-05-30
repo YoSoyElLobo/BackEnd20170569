@@ -8,6 +8,7 @@ import java.util.List;
 public interface UsuarioService {
     List<Usuario> findAll();
     List<Usuario> findByIdRol(Long idRol);
+    List<Usuario> findByIdRolAceptado(Long idRol);
     Usuario create(Usuario usuario);
     Usuario update(Usuario usuario);
     Usuario save(Usuario usuario);
