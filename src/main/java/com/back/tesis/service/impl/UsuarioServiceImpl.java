@@ -119,5 +119,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         return save(usuario);
     }
 
+    @Override
+    public List<Usuario> findPosiblesParticipantesByEstudio(Long idEstudio) {
+        return usuarioRepository.findPosiblesParticipantesByEstudio(idEstudio);
+    }
+
 
 }

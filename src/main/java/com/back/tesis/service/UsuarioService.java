@@ -23,5 +23,6 @@ public interface UsuarioService {
     Usuario updateDatosGenerales (Usuario usuario, UsuarioDatosGeneralesDTO usuarioDTO);
     Usuario retiro(Usuario usuario);
     Usuario registrarConsentimiento(Usuario usuario);
+    List<Usuario> findPosiblesParticipantesByEstudio(Long idEstudio);
 
 }

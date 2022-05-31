@@ -320,5 +320,21 @@ public class UsuarioController {
                 .body(restResponse);
     }
 
+    @GetMapping("/listPosiblesParticipantesByEstudio")
+    public ResponseEntity<RestResponse> listPosiblesParticipantesByEstudio(@RequestParam Long idEstudio){
+        RestResponse restResponse = new RestResponse();
+
+        Map<String, List<Usuario>> response = new HashMap<>();
+        response.put("usuarios", usuarioService.findPosiblesParticipantesByEstudio(idEstudio));
+
+        restResponse.setStatus(HttpStatus.OK);
+        restResponse.setPayload(response);
+        restResponse.setMessage("Se listan todos los usuarios");
+
+        return ResponseEntity
+                .status(restResponse.getStatus())
+                .body(restResponse);
+    }
+
 
 }
