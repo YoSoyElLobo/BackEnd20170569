@@ -8,7 +8,6 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 
